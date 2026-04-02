@@ -18,7 +18,7 @@ export function MiniPlayer() {
           <CoverArt mood={currentSong.mood} title={currentSong.title} size="sm" className="rounded-2xl" />
           <div className="min-w-0">
             <div className="truncate text-sm font-semibold text-white">{currentSong.title}</div>
-            <div className="truncate text-xs text-white/60">{currentSong.genres.join(" · ")}</div>
+            <div className="truncate text-xs text-white/60">{currentSong.genres.join(" / ")}</div>
           </div>
         </Link>
         <button

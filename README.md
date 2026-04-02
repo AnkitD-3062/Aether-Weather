@@ -1,17 +1,38 @@
 # Mood Based Music Player
 
-A mood-reactive music player built with Next.js. The app adapts playlist recommendations, colors, motion, and atmosphere around the user's selected mood.
+A premium, frontend-first mood-reactive music player built with Next.js. The app turns emotional input into playlist recommendations and adapts the interface in real time with mood-based color, motion, and atmosphere.
 
-## Features
+## GitHub Description
 
-- Splash and onboarding flow
-- Mood selection with text-based mood detection
-- Dynamic Home dashboard
-- Immersive music player with waveform and lyrics view
-- Mood history with weekly insights
-- Explore screen with genres, artists, and playlists
-- Profile screen with personalization controls
-- Local-first persistence for mood history, preferences, and listening behavior
+Use this as the repository description:
+
+`A mood-reactive music player built with Next.js featuring dynamic UI themes, playlist generation, immersive playback, and mood history insights.`
+
+## Live Demo
+
+GitHub Pages target:
+
+`https://ankitd-3062.github.io/Mood-Based-Music-Player/`
+
+## Highlights
+
+- Mood-driven playlist generation
+- Dynamic UI adaptation by emotional state
+- Cinematic player screen with waveform and lyrics view
+- Mood history and listening insights
+- Explore and profile flows for a fuller product experience
+- Local-first persistence with no backend required in the current release
+
+## Screens
+
+- Splash
+- Onboarding
+- Mood Selection
+- Home
+- Music Player
+- Mood History
+- Explore
+- Profile
 
 ## Tech Stack
 
@@ -20,9 +41,9 @@ A mood-reactive music player built with Next.js. The app adapts playlist recomme
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Lucide icons
+- Lucide React
 
-## Run Locally
+## Local Development
 
 ```bash
 npm install
@@ -31,30 +52,52 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Production Build
+## Quality Checks
 
 ```bash
+npm run lint
 npm run build
-npm start
 ```
+
+Or run both:
+
+```bash
+npm run check
+```
+
+## Deployment
+
+This repo is configured for GitHub Pages static deployment.
+
+The workflow in `.github/workflows/deploy-pages.yml` will:
+
+- build the app as a static export
+- upload the `out` directory
+- deploy the site to GitHub Pages
 
 ## Project Structure
 
 ```text
 src/
-  app/          routes and screens
-  components/   reusable UI and app chrome
-  lib/          data, moods, recommendation logic, storage
-  providers/    mood and player state
+  app/          route-level screens and metadata routes
+  components/   reusable UI building blocks and shell
+  lib/          mood model, catalog, recommendation logic, storage
+  providers/    global mood and player state
 ```
 
 ## Current Scope
 
-This version is intentionally frontend-first. It does not include a live backend or external music provider yet. Playback uses a curated demo catalog, and persistence uses browser local storage.
+This version is intentionally frontend-first and showcase-ready:
 
-## Suggested Next Steps
+- no backend
+- no real streaming provider
+- no external auth
 
-- Connect a real music API
-- Add cloud sync and user accounts
-- Add branded artwork and illustrations
-- Add deeper recommendation tuning from listening behavior
+Playback uses a curated demo catalog and app state is persisted locally in the browser.
+
+## Next Product Steps
+
+- connect a real music source
+- add album art and branded illustration assets
+- add smarter recommendation weighting
+- introduce cloud sync and account support

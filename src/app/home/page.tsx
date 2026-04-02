@@ -43,81 +43,84 @@ export default function HomePage() {
         <GlassCard className="ambient-panel noise-overlay overflow-hidden px-6 py-6">
           <div className="absolute inset-0 opacity-80" style={{ background: "var(--mood-gradient)" }} />
           <div className="relative space-y-5">
-              <div className="flex flex-wrap items-center gap-2">
-                <div className="inline-flex items-center rounded-full border border-white/15 bg-black/18 px-3 py-1 text-xs uppercase tracking-[0.28em] text-white/75">
-                  {moodLabels[mood]}
-                </div>
-                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white/80">
-                  Dynamic dashboard
-                </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center rounded-full border border-white/15 bg-black/18 px-3 py-1 text-xs uppercase tracking-[0.28em] text-white/75">
+                {moodLabels[mood]}
               </div>
-              <div className="flex items-end justify-between gap-4">
-                <div className="space-y-3">
-                  <h1 className="display-copy text-4xl text-white">{dashboard.featuredPlaylist.title}</h1>
-                  <p className="max-w-xs text-sm leading-7 text-white/75">{dashboard.featuredPlaylist.description}</p>
-                </div>
-                <CoverArt mood={dashboard.featuredPlaylist.mood} title={dashboard.featuredPlaylist.title} />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
-                  <p className="text-xs uppercase tracking-[0.24em] text-white/45">Mood</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{moodLabels[mood]}</p>
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
-                  <p className="text-xs uppercase tracking-[0.24em] text-white/45">Energy</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{dashboard.moodSongs[0]?.energy ?? "Low"}</p>
-                </div>
-                <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
-                  <p className="text-xs uppercase tracking-[0.24em] text-white/45">Genre</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{dashboard.moodSongs[0]?.genres[0] ?? "Ambient"}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <PillButton
-                  onClick={() => {
-                    if (featuredSongs.length) setQueueAndPlay(featuredSongs, featuredSongs[0]);
-                  }}
-                >
-                  <Play className="mr-2 h-4 w-4 fill-current" />
-                  Play now
-                </PillButton>
-                <Link href="/mood" className="text-sm text-white/80">
-                  Change mood
-                </Link>
+              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white/80">
+                Dynamic dashboard
               </div>
             </div>
+
+            <div className="flex items-end justify-between gap-4">
+              <div className="space-y-3">
+                <h1 className="display-copy text-4xl text-white">{dashboard.featuredPlaylist.title}</h1>
+                <p className="max-w-xs text-sm leading-7 text-white/75">{dashboard.featuredPlaylist.description}</p>
+              </div>
+              <CoverArt mood={dashboard.featuredPlaylist.mood} title={dashboard.featuredPlaylist.title} />
+            </div>
+
+            <div className="grid grid-cols-3 gap-3">
+              <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/45">Mood</p>
+                <p className="mt-2 text-sm font-semibold text-white">{moodLabels[mood]}</p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/45">Energy</p>
+                <p className="mt-2 text-sm font-semibold text-white">{dashboard.moodSongs[0]?.energy ?? "Low"}</p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-black/14 p-3">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/45">Genre</p>
+                <p className="mt-2 text-sm font-semibold text-white">{dashboard.moodSongs[0]?.genres[0] ?? "Ambient"}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <PillButton
+                onClick={() => {
+                  if (featuredSongs.length) setQueueAndPlay(featuredSongs, featuredSongs[0]);
+                }}
+              >
+                <Play className="mr-2 h-4 w-4 fill-current" />
+                Play now
+              </PillButton>
+              <Link href="/mood" className="text-sm text-white/80">
+                Change mood
+              </Link>
+            </div>
+          </div>
         </GlassCard>
 
         <section>
-            <SectionHeader title="Recommended for you" action="See all" />
-            <div className="flex gap-4 overflow-x-auto pb-2">
-              {dashboard.recommendedPlaylists.map((playlist) => (
-                <PlaylistCard key={playlist.id} playlist={playlist} />
-              ))}
-            </div>
+          <SectionHeader title="Recommended for you" action="See all" />
+          <div className="flex gap-4 overflow-x-auto pb-2">
+            {dashboard.recommendedPlaylists.map((playlist) => (
+              <PlaylistCard key={playlist.id} playlist={playlist} />
+            ))}
+          </div>
         </section>
 
         <section>
-            <SectionHeader title="Recently played" />
-            <div className="space-y-3">
-              {(dashboard.recentlyPlayed.length ? dashboard.recentlyPlayed : dashboard.moodSongs.slice(0, 3)).map((song) => (
-                <SongRow key={song.id} song={song} onAction={() => setQueueAndPlay(dashboard.moodSongs, song)} />
-              ))}
-            </div>
+          <SectionHeader title="Recently played" />
+          <div className="space-y-3">
+            {(dashboard.recentlyPlayed.length ? dashboard.recentlyPlayed : dashboard.moodSongs.slice(0, 3)).map((song) => (
+              <SongRow key={song.id} song={song} onAction={() => setQueueAndPlay(dashboard.moodSongs, song)} />
+            ))}
+          </div>
         </section>
 
         <section className="space-y-4">
-            <SectionHeader title="Based on your mood" />
-            <div className="space-y-3">
-              {dashboard.moodSongs.slice(0, 4).map((song) => (
-                <SongRow
-                  key={song.id}
-                  song={song}
-                  subtitle={`${song.genres.join(" · ")} · ${song.energy} energy`}
-                  onAction={() => setQueueAndPlay(dashboard.moodSongs, song)}
-                />
-              ))}
-            </div>
+          <SectionHeader title="Based on your mood" />
+          <div className="space-y-3">
+            {dashboard.moodSongs.slice(0, 4).map((song) => (
+              <SongRow
+                key={song.id}
+                song={song}
+                subtitle={`${song.genres.join(" / ")} / ${song.energy} energy`}
+                onAction={() => setQueueAndPlay(dashboard.moodSongs, song)}
+              />
+            ))}
+          </div>
         </section>
 
         <GlassCard className="ambient-panel space-y-2">
