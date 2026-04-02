@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b1020;
+  --foreground: #f5f7fb;
+  --surface: rgba(255, 255, 255, 0.06);
+  --stroke: rgba(255, 255, 255, 0.08);
+  --mood-accent: #7b61ff;
+  --mood-accent-soft: #3ddc97;
+  --mood-glow: rgba(123, 97, 255, 0.24);
+  --mood-gradient: linear-gradient(135deg, rgba(123, 97, 255, 0.95), rgba(61, 220, 151, 0.68));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, #12192b 0%, #0b1020 45%, #090e1b 100%);
+  color: var(--foreground);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+body::selection {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.screen-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px 20px 168px;
+}
+
+.display-copy {
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.ambient-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.ambient-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 45%);
+  pointer-events: none;
+}
+
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .screen-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
