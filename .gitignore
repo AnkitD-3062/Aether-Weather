@@ -18,6 +18,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 devserver.log
+devserver.err.log
+staticserver.log
+staticserver.err.log
 .codex/
 
 # local env files

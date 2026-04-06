@@ -1,6 +1,6 @@
 # Mood Based Music Player
 
-A premium, frontend-first mood-reactive music player built with Next.js. The app turns emotional input into playlist recommendations and adapts the interface in real time with mood-based color, motion, and atmosphere.
+A premium, frontend-first mood-reactive music player built with Next.js. The app turns emotional input into playlist recommendations and adapts the interface in real time with mood-based color, motion, layered glass panels, and a playful search experience.
 
 ## GitHub Description
 
@@ -21,7 +21,15 @@ GitHub Pages target:
 - Cinematic player screen with waveform and lyrics view
 - Mood history and listening insights
 - Explore and profile flows for a fuller product experience
+- Creative search hero with an animated mascot for discovery
 - Local-first persistence with no backend required in the current release
+
+## Why This Project Stands Out
+
+- It feels like a product concept, not just a component demo
+- The UI shifts with mood selection instead of staying visually static
+- Every core screen is already wired for a polished frontend showcase
+- It is deployment-ready for GitHub Pages with static export enabled
 
 ## Screens
 
@@ -94,6 +102,13 @@ This version is intentionally frontend-first and showcase-ready:
 - no external auth
 
 Playback uses a curated demo catalog and app state is persisted locally in the browser.
+
+## Publishing Checklist
+
+- Update the repo name to `Mood-Based-Music-Player` if you want the current Pages URL to match the default config
+- Add the GitHub description from the section above
+- Push the repository and enable GitHub Pages using GitHub Actions
+- Confirm the deployed site loads the static export from the `out` build artifact
 
 ## Next Product Steps
 

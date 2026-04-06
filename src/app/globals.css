@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b1020;
-  --foreground: #f5f7fb;
-  --surface: rgba(255, 255, 255, 0.06);
-  --stroke: rgba(255, 255, 255, 0.08);
-  --mood-accent: #7b61ff;
-  --mood-accent-soft: #3ddc97;
-  --mood-glow: rgba(123, 97, 255, 0.24);
-  --mood-gradient: linear-gradient(135deg, rgba(123, 97, 255, 0.95), rgba(61, 220, 151, 0.68));
+  --background: #090612;
+  --foreground: #f8f5ff;
+  --surface: rgba(255, 255, 255, 0.08);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --mood-accent: #8b5cf6;
+  --mood-accent-soft: #ffd166;
+  --mood-glow: rgba(139, 92, 246, 0.32);
+  --mood-gradient: linear-gradient(135deg, rgba(139, 92, 246, 0.94), rgba(249, 115, 22, 0.72));
 }
 
 * {
@@ -22,10 +22,12 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
-    linear-gradient(180deg, #12192b 0%, #0b1020 45%, #090e1b 100%);
+    radial-gradient(circle at top, rgba(255, 209, 102, 0.14), transparent 22%),
+    radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.12), transparent 24%),
+    linear-gradient(180deg, #140d26 0%, #0c0918 48%, #080511 100%);
   color: var(--foreground);
-  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-family: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
 }
 
 body::selection {
@@ -53,7 +55,7 @@ body::selection {
   inset: 0;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 45%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 46%);
   pointer-events: none;
 }
 
@@ -67,6 +69,59 @@ body::selection {
   background-size: 20px 20px;
   opacity: 0.18;
   pointer-events: none;
+}
+
+.search-hero {
+  background:
+    radial-gradient(circle at top left, rgba(255, 209, 102, 0.13), transparent 26%),
+    linear-gradient(140deg, rgba(33, 17, 57, 0.92), rgba(13, 10, 31, 0.82));
+}
+
+.search-hero__orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(10px);
+  opacity: 0.75;
+  animation: drift 12s ease-in-out infinite;
+}
+
+.search-hero__orb--violet {
+  top: -1.5rem;
+  right: -1rem;
+  height: 10rem;
+  width: 10rem;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.46), transparent 70%);
+}
+
+.search-hero__orb--orange {
+  bottom: -2rem;
+  left: -1.5rem;
+  height: 9rem;
+  width: 9rem;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.34), transparent 70%);
+  animation-delay: -4s;
+}
+
+.search-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, 14px, 0) scale(1.08);
+  }
 }
 
 @media (min-width: 768px) {

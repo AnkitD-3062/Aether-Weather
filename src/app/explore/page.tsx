@@ -1,11 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MicVocal, Search } from "lucide-react";
+import { MicVocal, Search, Sparkles } from "lucide-react";
 
 import { artists, playlists, songs } from "@/lib/catalog";
 import { MoodBackdrop } from "@/components/mood-backdrop";
 import { PlaylistCard } from "@/components/playlist-card";
+import { SearchMascot } from "@/components/search-mascot";
 import { SectionHeader } from "@/components/section-header";
 import { SongRow } from "@/components/song-row";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -23,6 +24,10 @@ export default function ExplorePage() {
   const [query, setQuery] = useState("");
   const { setQueueAndPlay } = usePlayer();
 
+  const promptCopy = query.trim()
+    ? `Searching for "${query.trim()}" across the mood lab`
+    : "Ask the mood lab for a vibe, genre, or artist";
+
   const filteredSongs = useMemo(() => {
     const value = query.toLowerCase().trim();
     return value
@@ -38,18 +43,72 @@ export default function ExplorePage() {
     <main className="screen-container">
       <MoodBackdrop mood="focus" />
       <div className="relative mx-auto max-w-xl space-y-8">
-        <header className="space-y-3 pt-2">
-          <p className="display-copy text-4xl text-white">Explore</p>
-          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-4 py-4">
-            <Search className="h-4 w-4 text-white/40" />
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search songs, genres, artists"
-              className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/35"
-            />
-          </div>
+        <header className="pt-2">
+          <GlassCard className="ambient-panel search-hero overflow-hidden border-white/12 px-5 py-5 sm:px-6">
+            <div className="search-hero__orb search-hero__orb--violet" />
+            <div className="search-hero__orb search-hero__orb--orange" />
+            <div className="search-hero__grid" />
+
+            <div className="relative grid gap-6 md:grid-cols-[minmax(0,1fr)_172px] md:items-center">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/75">
+                  <Sparkles className="h-3.5 w-3.5 text-[#ffd166]" />
+                  Search playground
+                </div>
+
+                <div className="space-y-2">
+                  <p className="display-copy text-4xl text-white sm:text-5xl">Explore</p>
+                  <p className="max-w-md text-sm leading-7 text-white/72">
+                    Dig through songs, moods, and artists with a brighter search experience built to feel more like a tiny music lab.
+                  </p>
+                </div>
+
+                <div className="rounded-[30px] border border-white/12 bg-[#120d24]/55 p-3 shadow-[0_20px_60px_rgba(8,6,20,0.45)] backdrop-blur-xl">
+                  <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-4">
+                    <Search className="h-4 w-4 text-white/45" />
+                    <input
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      placeholder="Search songs, genres, artists"
+                      className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/35"
+                    />
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-white/68">
+                    <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">Try: dreamy synth</span>
+                    <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">indie</span>
+                    <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1">late night focus</span>
+                  </div>
+                </div>
+
+                <div className="rounded-[24px] border border-white/10 bg-white/7 px-4 py-3 text-sm text-white/75 backdrop-blur-md">
+                  <span className="font-semibold text-[#ffd166]">Bloop says:</span> {promptCopy}
+                </div>
+              </div>
+
+              <div className="relative">
+                <SearchMascot query={query} />
+              </div>
+            </div>
+          </GlassCard>
         </header>
+
+        <section>
+          <SectionHeader title="Fast picks" />
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {["Night Drive", "Soft Chaos", "Feel-Good Pop", "Warm Lo-fi"].map((label, index) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => setQuery(label)}
+                className="rounded-[22px] border border-white/10 bg-white/7 px-4 py-4 text-left text-sm text-white/78 transition hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/10"
+              >
+                <span className="block text-[11px] uppercase tracking-[0.26em] text-white/38">Preset {index + 1}</span>
+                <span className="mt-2 block font-semibold text-white">{label}</span>
+              </button>
+            ))}
+          </div>
+        </section>
 
         <section>
           <SectionHeader title="Genres" />
@@ -91,9 +150,18 @@ export default function ExplorePage() {
         <section>
           <SectionHeader title="Search results" />
           <div className="space-y-3">
-            {filteredSongs.map((song) => (
-              <SongRow key={song.id} song={song} onAction={() => setQueueAndPlay(filteredSongs, song)} />
-            ))}
+            {filteredSongs.length ? (
+              filteredSongs.map((song) => (
+                <SongRow key={song.id} song={song} onAction={() => setQueueAndPlay(filteredSongs, song)} />
+              ))
+            ) : (
+              <GlassCard className="space-y-2 text-center">
+                <p className="display-copy text-2xl text-white">Nothing in the lab yet</p>
+                <p className="text-sm leading-7 text-white/65">
+                  Try a genre like pop or lo-fi, or search for part of a song title to wake Bloop back up.
+                </p>
+              </GlassCard>
+            )}
           </div>
         </section>
       </div>
