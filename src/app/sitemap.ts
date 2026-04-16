@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://ankitd-3062.github.io/Aether-Weather";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["/", "/onboarding", "/mood", "/home", "/player", "/history", "/explore", "/profile"];
+  const routes = ["/"];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,

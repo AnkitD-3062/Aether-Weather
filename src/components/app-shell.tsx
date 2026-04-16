@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { BottomNav } from "@/components/bottom-nav";
 import { MiniPlayer } from "@/components/mini-player";
 
-const hiddenRoutes = new Set(["/", "/onboarding"]);
+const hiddenRoutes = new Set(["/", "/onboarding", "/mood", "/home", "/player", "/history", "/explore", "/profile"]);
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
