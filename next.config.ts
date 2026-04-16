@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const repoName = "Mood-Based-Music-Player";
+const repoName = "Aether-Weather";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

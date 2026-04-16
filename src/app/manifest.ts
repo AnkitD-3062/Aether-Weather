@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Mood Based Music Player",
-    short_name: "MoodPlayer",
-    description: "Mood-reactive music with dynamic visuals and adaptive recommendations.",
+    name: "Aether Weather",
+    short_name: "Aether",
+    description: "A cinematic weather web app with immersive backdrops, ambient motion, and a premium glass interface.",
     start_url: "/",
     display: "standalone",
     background_color: "#0b1020",

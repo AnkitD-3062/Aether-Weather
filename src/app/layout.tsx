@@ -5,25 +5,25 @@ import { AppProviders } from "@/providers/app-providers";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Mood Based Music Player",
-  description: "A premium mood-reactive music player with adaptive visuals, playlist generation, and a cinematic listening interface.",
-  applicationName: "Mood Based Music Player",
-  metadataBase: new URL("https://ankitd-3062.github.io/Mood-Based-Music-Player/"),
+  title: "Aether Weather",
+  description: "A cinematic weather web app with immersive video backdrops, glassmorphism UI, and fluid transitions.",
+  applicationName: "Aether Weather",
+  metadataBase: new URL("https://ankitd-3062.github.io/Aether-Weather/"),
   openGraph: {
-    title: "Mood Based Music Player",
-    description: "Choose a mood, generate a soundtrack, and watch the interface react in real time.",
-    siteName: "Mood Based Music Player",
+    title: "Aether Weather",
+    description: "Watch each city unfold through cinematic weather scenes, ambient motion, and a premium glass interface.",
+    siteName: "Aether Weather",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mood Based Music Player",
-    description: "Mood-reactive music UI built with Next.js.",
+    title: "Aether Weather",
+    description: "Cinematic weather experience built with Next.js.",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b1020",
+  themeColor: "#080f1d",
   width: "device-width",
   initialScale: 1,
 };

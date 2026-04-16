@@ -6,7 +6,6 @@ import { MicVocal, Search, Sparkles } from "lucide-react";
 import { artists, playlists, songs } from "@/lib/catalog";
 import { MoodBackdrop } from "@/components/mood-backdrop";
 import { PlaylistCard } from "@/components/playlist-card";
-import { SearchMascot } from "@/components/search-mascot";
 import { SectionHeader } from "@/components/section-header";
 import { SongRow } from "@/components/song-row";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -26,7 +25,7 @@ export default function ExplorePage() {
 
   const promptCopy = query.trim()
     ? `Searching for "${query.trim()}" across the mood lab`
-    : "Ask the mood lab for a vibe, genre, or artist";
+    : "Search for a vibe, genre, or artist and jump straight into a matching playlist.";
 
   const filteredSongs = useMemo(() => {
     const value = query.toLowerCase().trim();
@@ -49,7 +48,7 @@ export default function ExplorePage() {
             <div className="search-hero__orb search-hero__orb--orange" />
             <div className="search-hero__grid" />
 
-            <div className="relative grid gap-6 md:grid-cols-[minmax(0,1fr)_172px] md:items-center">
+            <div className="relative space-y-4">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/75">
                   <Sparkles className="h-3.5 w-3.5 text-[#ffd166]" />
@@ -82,12 +81,8 @@ export default function ExplorePage() {
                 </div>
 
                 <div className="rounded-[24px] border border-white/10 bg-white/7 px-4 py-3 text-sm text-white/75 backdrop-blur-md">
-                  <span className="font-semibold text-[#ffd166]">Bloop says:</span> {promptCopy}
+                  <span className="font-semibold text-[#ffd166]">Quick tip:</span> {promptCopy}
                 </div>
-              </div>
-
-              <div className="relative">
-                <SearchMascot query={query} />
               </div>
             </div>
           </GlassCard>
@@ -158,7 +153,7 @@ export default function ExplorePage() {
               <GlassCard className="space-y-2 text-center">
                 <p className="display-copy text-2xl text-white">Nothing in the lab yet</p>
                 <p className="text-sm leading-7 text-white/65">
-                  Try a genre like pop or lo-fi, or search for part of a song title to wake Bloop back up.
+                  Try a genre like pop or lo-fi, or search for part of a song title to surface matching tracks.
                 </p>
               </GlassCard>
             )}
