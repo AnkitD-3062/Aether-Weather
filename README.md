@@ -104,7 +104,7 @@ This version is intentionally frontend-first and showcase-ready:
 - no real weather API yet
 - no real authentication
 
-Weather data currently comes from a curated local dataset in `src/weather/data/weather-scenes.ts`. Custom city searches use a fallback forecast scene until a live weather API is connected.
+Weather data currently comes from a curated local dataset in `src/weather/data/weather-scenes.ts`. Custom city searches use a fallback forecast scene until a live weather API is connected...
 
 ## Publishing Checklist
 
