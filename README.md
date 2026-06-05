@@ -1,46 +1,44 @@
-# Mood Based Music Player
+# Aether Weather
 
-A premium, frontend-first mood-reactive music player built with Next.js. The app turns emotional input into playlist recommendations and adapts the interface in real time with mood-based color, motion, layered glass panels, and a playful search experience.
+Aether Weather is a cinematic weather web app built with Next.js. It presents forecasts as immersive scenes with animated backgrounds, ambient sound, glassmorphism panels, city-based weather states, and smooth transitions between each step of the experience.
 
 ## GitHub Description
 
 Use this as the repository description:
 
-`A mood-reactive music player built with Next.js featuring dynamic UI themes, playlist generation, immersive playback, and mood history insights.`
+`A cinematic weather app built with Next.js featuring immersive weather scenes, ambient sound, city forecasts, and animated glassmorphism UI.`
 
 ## Live Demo
 
 GitHub Pages target:
 
-`https://ankitd-3062.github.io/Mood-Based-Music-Player/`
+`https://ankitd-3062.github.io/Aether-Weather/`
 
 ## Highlights
 
-- Mood-driven playlist generation
-- Dynamic UI adaptation by emotional state
-- Cinematic player screen with waveform and lyrics view
-- Mood history and listening insights
-- Explore and profile flows for a fuller product experience
-- Creative search hero with an animated mascot for discovery
-- Local-first persistence with no backend required in the current release
+- Cinematic weather dashboard with motion-driven parallax
+- Curated city forecasts for Mumbai, London, Tokyo, New York, Reykjavik, and Dubai
+- Dynamic weather scenes for rain, storm, mist, clouds, sun, and snow
+- Ambient weather audio with mute control
+- Location search with custom-city fallback state
+- Login/sign-up entry flow for a product-style experience
+- Local session persistence for selected city and sound preference
+- Static export setup for GitHub Pages deployment
 
 ## Why This Project Stands Out
 
-- It feels like a product concept, not just a component demo
-- The UI shifts with mood selection instead of staying visually static
-- Every core screen is already wired for a polished frontend showcase
-- It is deployment-ready for GitHub Pages with static export enabled
+- It treats weather as an atmosphere, not just a data card
+- The interface shifts with each city and weather condition
+- Video, audio, animation, and layered glass panels work together as one experience
+- The app is frontend-first, polished, and ready to showcase as a portfolio project
 
 ## Screens
 
-- Splash
-- Onboarding
-- Mood Selection
-- Home
-- Music Player
-- Mood History
-- Explore
-- Profile
+- Auth Entry
+- City Selection
+- Loading Transition
+- Cinematic Weather Dashboard
+- City Switcher
 
 ## Tech Stack
 
@@ -79,18 +77,23 @@ This repo is configured for GitHub Pages static deployment.
 
 The workflow in `.github/workflows/deploy-pages.yml` will:
 
+- install dependencies with `npm ci`
 - build the app as a static export
 - upload the `out` directory
 - deploy the site to GitHub Pages
+
+The Next.js config automatically applies the `/Aether-Weather` base path during GitHub Actions builds.
 
 ## Project Structure
 
 ```text
 src/
-  app/          route-level screens and metadata routes
-  components/   reusable UI building blocks and shell
-  lib/          mood model, catalog, recommendation logic, storage
-  providers/    global mood and player state
+  app/              Next.js app routes, metadata, manifest, and global styles
+  weather/          Aether Weather app, scenes, hooks, types, and UI components
+  weather/data/     curated city forecast and scene configuration
+  weather/hooks/    local session and weather experience state
+  weather/components/
+                    cinematic background, auth, location picker, dashboard, and controls
 ```
 
 ## Current Scope
@@ -98,21 +101,24 @@ src/
 This version is intentionally frontend-first and showcase-ready:
 
 - no backend
-- no real streaming provider
-- no external auth
+- no real weather API yet
+- no real authentication
 
-Playback uses a curated demo catalog and app state is persisted locally in the browser.
+Weather data currently comes from a curated local dataset in `src/weather/data/weather-scenes.ts`. Custom city searches use a fallback forecast scene until a live weather API is connected.
 
 ## Publishing Checklist
 
-- Update the repo name to `Mood-Based-Music-Player` if you want the current Pages URL to match the default config
 - Add the GitHub description from the section above
-- Push the repository and enable GitHub Pages using GitHub Actions
-- Confirm the deployed site loads the static export from the `out` build artifact
+- Push the repository to `main`
+- Enable GitHub Pages using GitHub Actions
+- Confirm the deployed site loads at `https://ankitd-3062.github.io/Aether-Weather/`
+- Verify ambient video and audio assets load correctly in production
 
 ## Next Product Steps
 
-- connect a real music source
-- add album art and branded illustration assets
-- add smarter recommendation weighting
-- introduce cloud sync and account support
+- connect a live weather API
+- add geolocation-based current weather
+- add hourly and weekly forecast panels
+- replace demo auth with real account support
+- add saved locations and user preferences
+- improve offline and loading states for unreliable networks
