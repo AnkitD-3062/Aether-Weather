@@ -25,3 +25,4 @@ staticserver.err.log
 
 # local env files
 .env*.local
+
